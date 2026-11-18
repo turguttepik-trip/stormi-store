@@ -204,6 +204,7 @@
     $("#cardMedia").innerHTML = `<img src="${p.cut || p.img}" alt="${p.name}">`;
     $("#cardMedia").classList.toggle("is-cut", !!p.cut);
     const add = $("#addBtn"); add.classList.remove("added"); add.textContent = "SEPETE EKLE";
+    $("#tryBtn").hidden = !canTry(p);
     card.dataset.slug = p.slug;
   }
   function focusItem(i) {
@@ -274,6 +275,22 @@
       if (wi === state.wall) go(); else switchWall(wi, go);
     } else openModal(bySlug[slug]);
   }
+
+  /* ---------- Canlı deneme (boyun ipleri) ---------- */
+  const canTry = p => !!p.cut && typeOf(p) === "Boyun ipi" && (p.hang || "loop") === "loop";
+  let tryMod = null;
+  async function openTryOn(slug, testImage) {
+    try {
+      tryMod = tryMod || await import("./tryon.js");
+    } catch (e) {
+      toast("Canlı deneme yüklenemedi — internet bağlantını kontrol et"); return;
+    }
+    tryMod.open(slug, {
+      products: ALL.filter(canTry), money, shortName, testImage,
+      onAdd: (s, el) => addToCart(s, el),
+    });
+  }
+  window.__stormiTryTest = (url, slug) => openTryOn(slug || ALL.find(canTry).slug, url); // test kolaylığı
 
   /* ---------- Sepet ---------- */
   function addToCart(slug, srcEl) {
@@ -354,7 +371,7 @@
   function removeLine(slug) { cart = cart.filter(x => x.slug !== slug); saveCart(); renderCart(); }
 
   /* ---------- Kasa / ödeme ---------- */
-  function goCounter() { closeModal(); unfocus(false); closeCatalog(); closeCheckout(); setMode("counter"); camCounter(); hideToast(); }
+  function goCounter() { if (tryMod) tryMod.close(); closeModal(); unfocus(false); closeCatalog(); closeCheckout(); setMode("counter"); camCounter(); hideToast(); }
   function goHome() { closeModal(); closeCatalog(); closeCheckout(); unfocus(false); setMode("wall"); camWall(); }
   function fillCheckout() {
     const total = cartTotal();
@@ -522,6 +539,7 @@
         case "closeCheckout": closeCheckout(); break;
         case "catalog": if (archive.classList.contains("open")) closeCatalog(); else { filt = 0; openCatalog(); } break;
         case "seeAll": filt = WALLS[state.wall].filter; openCatalog(); break;
+        case "tryon": openTryOn(card.dataset.slug); break;
         case "closeCatalog": closeCatalog(); break;
         case "add": addToCart(card.dataset.slug, state.modal ? $("#cardMedia") : $(".item.active .hang img")); break;
         case "prev": focusItem(state.focus - 1); break;

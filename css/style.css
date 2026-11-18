@@ -482,7 +482,68 @@ body.mode-counter .hud-bottom{justify-content:flex-start}
 body.mode-counter #goWall{display:flex}
 body.mode-focus .go-counter,body.mode-checkout .go-counter{opacity:0;pointer-events:none}
 
-.toast{position:fixed;left:50%;bottom:3vh;z-index:60;transform:translate(-50%,30px);opacity:0;pointer-events:none;
+/* ---------- Üzerinde dene ---------- */
+.btn-try{width:100%;margin-top:14px;display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;text-align:left;
+  background:rgba(255,255,255,.55);border:1px solid rgba(0,0,0,.08);transition:background .3s,transform .3s}
+.btn-try:hover{background:#fff;transform:translateY(-1px)}
+.btn-try b{display:block;font:600 14px/1.2 var(--sans);color:#1d1d1f}
+.btn-try small{display:block;font:400 11.5px/1.3 var(--sans);color:#86868b}
+.btn-try .try-arr{margin-left:auto;font:600 15px/1 var(--sans)}
+.try-dot{width:30px;height:30px;border-radius:50%;flex:none;position:relative;background:linear-gradient(135deg,#f3a21f,#e0321c)}
+.try-dot::after{content:"";position:absolute;inset:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:pulse 2s infinite}
+.card.modal .btn-try{grid-column:2}
+
+.tryon{position:fixed;inset:0;z-index:80;display:grid;grid-template-columns:1fr 380px;background:#0c0b0a;
+  opacity:0;pointer-events:none;transition:opacity .5s}
+.tryon.open{opacity:1;pointer-events:auto}
+.to-stage{position:relative;display:grid;place-items:center;overflow:hidden;padding:2.4vh}
+.to-stage video{display:none}
+.to-stage canvas{max-width:100%;max-height:100%;border-radius:22px;background:#1a1816;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.to-status{position:absolute;left:50%;top:5vh;transform:translateX(-50%);padding:11px 18px;border-radius:99px;
+  background:rgba(20,18,16,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#f5f5f7;
+  font:500 13.5px/1.2 var(--sans);white-space:nowrap;max-width:90%;overflow:hidden;text-overflow:ellipsis}
+.to-status.warn{background:rgba(160,40,20,.85)}
+.to-nocam{display:none;position:absolute;inset:0;margin:auto;width:min(360px,80%);height:max-content;padding:26px;border-radius:20px;text-align:center;
+  background:#1d1b19;color:#f5f5f7;flex-direction:column;gap:10px;align-items:center}
+.to-nocam b{font:600 19px/1.2 var(--sans)}
+.to-nocam span{font:400 14px/1.45 var(--sans);color:#a1a1a6;margin-bottom:6px}
+.to-nocam .btn-dark{background:#f5f5f7;color:#1d1d1f}
+.tryon.no-cam:not(.is-photo) .to-nocam{display:flex}
+.tryon.no-cam:not(.is-photo) canvas{opacity:.15}
+.to-shutter{position:absolute;bottom:4.5vh;right:4.5vh;width:66px;height:66px;border-radius:50%;
+  border:4px solid rgba(255,255,255,.9);background:rgba(255,255,255,.25);backdrop-filter:blur(6px);transition:transform .2s,background .2s}
+.to-shutter:hover{background:rgba(255,255,255,.5)}
+.to-shutter:active{transform:scale(.92)}
+.tryon.no-cam:not(.is-photo) .to-shutter{display:none}
+.to-side{position:relative;background:#f5f5f7;color:#1d1d1f;padding:30px 26px 22px;display:flex;flex-direction:column;overflow-y:auto}
+.to-side .card-close{top:16px;right:16px}
+.to-title{font:700 30px/1.08 var(--sans);letter-spacing:-.03em;margin-top:2px}
+.to-price{font:600 19px/1 var(--sans);margin:10px 0 14px}
+.to-text{font:400 14px/1.5 var(--sans);color:#6e6e73;margin-bottom:22px}
+.to-label{font:600 12px/1 var(--sans);color:#86868b;margin-bottom:10px}
+.to-swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:22px}
+.to-sw{aspect-ratio:1;border-radius:12px;background:#fff;border:2px solid transparent;display:grid;place-items:center;overflow:hidden;transition:border-color .2s,transform .2s}
+.to-sw img{max-width:80%;max-height:80%;object-fit:contain}
+.to-sw:hover{transform:translateY(-2px)}
+.to-sw.on{border-color:#e0321c}
+.to-side .btn-primary{margin-top:auto}
+.to-row{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;margin-top:14px}
+.to-link{font:400 13px/1 var(--sans);color:#0066cc}
+.to-link:hover{text-decoration:underline}
+.to-link.cam{display:none}
+.tryon.is-photo .to-link.cam{display:inline}
+.to-side .fine{margin-top:14px;font:400 11px/1.5 var(--sans);letter-spacing:0;color:#86868b}
+@media (max-width:760px){
+  .tryon{grid-template-columns:1fr;grid-template-rows:1fr auto}
+  .to-stage{padding:10px}
+  .to-stage canvas{border-radius:16px}
+  .to-shutter{bottom:2.5vh;width:58px;height:58px}
+  .to-side{max-height:44vh;padding:18px 16px 14px;border-radius:20px 20px 0 0}
+  .to-title{font-size:22px}.to-text{display:none}
+  .to-swatches{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:56px;overflow-x:auto;margin-bottom:12px}
+}
+
+.toast{position:fixed;left:50%;bottom:3vh;z-index:90;transform:translate(-50%,30px);opacity:0;pointer-events:none;
   background:var(--ink);color:#fff;font:700 10.5px/1 var(--sans);letter-spacing:0.056em;padding:13px 18px;border-radius:99px;
   transition:opacity .4s,transform .5s var(--ease);display:flex;gap:14px;align-items:center}
 .toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}

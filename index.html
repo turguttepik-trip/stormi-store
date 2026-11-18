@@ -94,11 +94,46 @@
       <div class="card-price" id="cardPrice"></div>
       <button class="btn-dark" id="addBtn" data-action="add">SEPETE EKLE</button>
     </div>
+    <button class="btn-try" id="tryBtn" data-action="tryon" hidden>
+      <span class="try-dot"></span><span><b>Üzerinde dene</b><small>Canlı kamera · cihazında çalışır</small></span><span class="try-arr">→</span>
+    </button>
     <div class="card-foot">
       <a id="cardLink" href="#" target="_blank" rel="noopener">ÜRÜN SAYFASI ↗</a>
       <span class="card-nav"><button data-action="prev" aria-label="Önceki">←</button><button data-action="next" aria-label="Sonraki">→</button></span>
     </div>
   </aside>
+
+  <!-- Canlı deneme -->
+  <section class="tryon" id="tryon" aria-hidden="true" role="dialog" aria-label="Üzerinde dene">
+    <div class="to-stage">
+      <video id="toVideo" playsinline muted></video>
+      <canvas id="toCanvas"></canvas>
+      <div class="to-status" id="toStatus" hidden></div>
+      <div class="to-nocam">
+        <b>Kamera kullanılamıyor</b>
+        <span>Önden çekilmiş, omuzların görünen bir fotoğrafını yükle.</span>
+        <button class="btn-dark" data-to="upload">FOTOĞRAF YÜKLE</button>
+      </div>
+      <button class="to-shutter" data-to="snap" aria-label="Fotoğraf çek"></button>
+    </div>
+    <aside class="to-side">
+      <button class="card-close" data-to="close" aria-label="Kapat">✕</button>
+      <div class="card-eyebrow">CANLI DENEME · BETA</div>
+      <h2 class="to-title" id="toTitle"></h2>
+      <div class="to-price" id="toPrice"></div>
+      <p class="to-text">Kameraya karşı dur; omuzların ve yüzün görünsün. Boyun ipi boynuna asılır ve seninle hareket eder.</p>
+      <div class="to-label">Diğer boyun ipleri</div>
+      <div class="to-swatches" id="toSwatches"></div>
+      <button class="btn-primary" data-to="add">Sepete Ekle <span>→</span></button>
+      <div class="to-row">
+        <button class="to-link" data-to="snap">Fotoğraf çek ve kaydet</button>
+        <button class="to-link" data-to="upload">Fotoğraf yükle</button>
+        <button class="to-link cam" data-to="camera">Kameraya dön</button>
+      </div>
+      <p class="fine">Görüntün yalnızca bu cihazda işlenir; hiçbir yere gönderilmez ve kaydedilmez.</p>
+      <input type="file" id="toFile" accept="image/*" hidden>
+    </aside>
+  </section>
 
   <!-- Sepet paneli (kasada açılır) -->
   <aside class="bag" id="bag" aria-label="Sepet">
