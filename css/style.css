@@ -135,13 +135,8 @@ body.is-loading .wordmark span{animation-play-state:paused}
 .item.leave{animation:liftOut .45s var(--ease) both;animation-delay:var(--d)}
 @keyframes dropIn{from{opacity:0;transform:translateY(-12vh)}}
 @keyframes liftOut{to{opacity:0;transform:translateY(-8vh)}}
-/* setler: parçalar birbirine karışmasın diye her setin arkasında askılı ambalaj kartı gibi buzlu plaka */
+/* setler: parçalar birbirine karışmasın diye setlerin arası biraz daha açık */
 .item.is-set{margin:0 .7vw}
-.item.is-set::before{content:"";position:absolute;inset:-1.4vh -1vw -1.6vh;border-radius:16px;z-index:-1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.18));border:1px solid rgba(255,255,255,.75);
-  box-shadow:0 1.6vh 3.4vh rgba(70,45,20,.08),inset 0 1px 0 rgba(255,255,255,.9);
-  backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);transition:opacity .6s}
-body.mode-focus .item.is-set:not(.active)::before{opacity:.3}
 /* çivi, ürünün asılma noktasına (hx,hy) yerleşir; ürün kendi alanında kalır */
 .peg{position:absolute;left:calc(var(--hx,.5) * 100%);top:calc(var(--hy,0) * 100% - 1vh);width:2vh;height:2vh;margin-left:-1vh;border-radius:50%;z-index:2;
   background:radial-gradient(circle at 35% 30%,#6c625a,#1d1917 70%);box-shadow:0 .5vh .8vh rgba(0,0,0,.35)}
