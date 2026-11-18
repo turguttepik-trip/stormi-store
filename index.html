@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Stormi Store TR — Boyun İpi, Yoyo Yaka Kartlığı, Telefon Askısı</title>
+  <meta name="description" content="İş tarzınızı yansıtan özel modeller. Stormi Store TR: %100 saten dokuma boyun ipleri, yoyo yaka kartlıkları, setler ve anahtarlıklar. Aynı gün kargo, 399 TL üzeri kargo bedava.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="img/logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+  <!-- Duyuru bandı -->
+  <div class="ticker" aria-label="Duyurular">
+    <div class="ticker-track">
+      <span>AYNI GÜN KARGO</span><i>✦</i><span>399 TL ÜZERİ KARGO BEDAVA</span><i>✦</i><span>14 GÜN KOŞULSUZ İADE</span><i>✦</i><span>%100 SATEN DOKUMA</span><i>✦</i>
+      <span>AYNI GÜN KARGO</span><i>✦</i><span>399 TL ÜZERİ KARGO BEDAVA</span><i>✦</i><span>14 GÜN KOŞULSUZ İADE</span><i>✦</i><span>%100 SATEN DOKUMA</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- Üst menü -->
+  <header class="hud-top">
+    <a class="brand" href="#" data-action="home" aria-label="Stormi Store TR ana sayfa">
+      <img src="img/logo.webp" alt="Stormi Store TR">
+      <span class="preview-tag" title="Tasarım önizlemesi — satış yapılmaz">ÖNİZLEME</span>
+    </a>
+    <nav class="collections" id="collections" aria-label="Koleksiyonlar"></nav>
+    <div class="hud-actions">
+      <button class="hud-btn cart-btn" data-action="counter" aria-label="Sepet">SEPET <b id="cartCount">0</b></button>
+    </div>
+  </header>
+
+  <!-- 3B sahne -->
+  <main class="stage" id="stage">
+    <div class="world" id="world">
+
+      <!-- DUVAR -->
+      <section class="wall" aria-label="Ürün duvarı">
+        <div class="wall-light"></div>
+        <div class="arch"><div class="arch-inner"></div></div>
+        <h1 class="wordmark" id="wordmark" aria-label="Stormi Store TR">
+          <span class="wm-line l1"><span style="--i:0">S</span><span style="--i:1">t</span><span style="--i:2">o</span><span style="--i:3">r</span><span style="--i:4">m</span><span style="--i:5">i</span></span>
+          <span class="wm-line l2"><span style="--i:6">S</span><span style="--i:7">t</span><span style="--i:8">o</span><span style="--i:9">r</span><span style="--i:10">e</span><span class="tr" style="--i:11">TR</span></span>
+        </h1>
+        <div class="slogan">
+          <small>RENGARENK MODEL BOYUN İPİ</small>
+          <p>İş tarzınızı yansıtan özel modeller.</p>
+        </div>
+        <div class="rack" id="rack"></div>
+        <div class="baseboard"></div>
+      </section>
+
+      <!-- KASA -->
+      <section class="shop" aria-label="Kasa">
+        <div class="floor"></div>
+        <div class="counter" id="counter">
+          <div class="screen" id="screen" aria-hidden="true">
+            <div class="screen-brand">STORMİ STORE TR</div>
+            <div class="screen-big"><b id="screenQty">0</b><span>ÜRÜN</span></div>
+            <div class="screen-total" id="screenTotal">₺0,00</div>
+            <div class="screen-ship" id="screenShip"></div>
+            <div class="screen-stand"></div>
+          </div>
+          <div class="counter-top">
+            <div class="slab" id="slab"></div>
+          </div>
+          <div class="counter-body">
+            <div class="flute left"></div>
+            <div class="counter-panel">
+              <div class="counter-logo">STORMİ</div>
+              <div class="counter-sub">STORE · TR</div>
+              <div class="counter-line">BOYUN İPİ &nbsp;—&nbsp; YOYO YAKA KARTI &nbsp;—&nbsp; ANAHTARLIK &nbsp;—&nbsp; SETLER</div>
+            </div>
+            <div class="flute right"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Ürün kartı (cam efekt) -->
+  <aside class="card" id="card" aria-hidden="true" role="dialog" aria-label="Ürün detayı">
+    <button class="card-close" data-action="back" aria-label="Kapat">✕</button>
+    <div class="card-media" id="cardMedia"></div>
+    <div class="card-eyebrow" id="cardEyebrow"></div>
+    <h2 class="card-title" id="cardTitle"></h2>
+    <p class="card-sub" id="cardSub"></p>
+    <dl class="card-specs" id="cardSpecs"></dl>
+    <div class="card-buy">
+      <div class="card-price" id="cardPrice"></div>
+      <button class="btn-dark" id="addBtn" data-action="add">SEPETE EKLE</button>
+    </div>
+    <div class="card-foot">
+      <a id="cardLink" href="#" target="_blank" rel="noopener">ÜRÜN SAYFASI ↗</a>
+      <span class="card-nav"><button data-action="prev" aria-label="Önceki">←</button><button data-action="next" aria-label="Sonraki">→</button></span>
+    </div>
+  </aside>
+
+  <!-- Sepet paneli (kasada açılır) -->
+  <aside class="bag" id="bag" aria-label="Sepet">
+    <header class="bag-head">
+      <div><small>SEPETİNİZ</small><h3><span id="bagCount">0</span> ürün</h3></div>
+      <button class="card-close" data-action="home" aria-label="Kapat">✕</button>
+    </header>
+    <div class="ship-meter" id="shipMeter"><p id="shipText"></p><div class="bar"><i id="shipBar"></i></div></div>
+    <ul class="bag-list" id="bagList"></ul>
+    <footer class="bag-foot" id="bagFoot">
+      <div class="row"><span>Ara toplam</span><span id="bagSub"></span></div>
+      <div class="row"><span>Kargo</span><span id="bagShip"></span></div>
+      <div class="row total"><span>Toplam</span><b id="bagTotal"></b></div>
+      <button class="btn-primary" id="checkoutBtn" data-action="checkout">Ödemeye Geç <span>→</span></button>
+      <p class="fine">256-bit SSL · 14 gün koşulsuz iade · Aynı gün kargo</p>
+    </footer>
+  </aside>
+
+  <!-- Ödeme -->
+  <aside class="checkout" id="checkout" aria-hidden="true" role="dialog" aria-label="Ödeme">
+    <button class="card-close" data-action="closeCheckout" aria-label="Kapat">✕</button>
+    <div class="co-grid" id="coGrid">
+      <form id="checkoutForm" class="co-form" novalidate>
+        <div class="card-eyebrow">STORMİ STORE TR · GÜVENLİ ÖDEME</div>
+        <h2 class="co-title">Teslimat bilgileri</h2>
+        <fieldset>
+          <legend>İletişim</legend>
+          <div class="grid2">
+            <label class="fld"><span>Ad Soyad</span><input name="name" autocomplete="name" required></label>
+            <label class="fld"><span>Telefon</span><input name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="05xx xxx xx xx" required></label>
+          </div>
+          <label class="fld"><span>E-posta</span><input name="email" type="email" autocomplete="email" placeholder="ornek@mail.com" required></label>
+        </fieldset>
+        <fieldset>
+          <legend>Teslimat adresi</legend>
+          <div class="grid2">
+            <label class="fld"><span>İl</span><input name="city" autocomplete="address-level1" required></label>
+            <label class="fld"><span>İlçe</span><input name="district" autocomplete="address-level2" required></label>
+          </div>
+          <label class="fld"><span>Açık adres</span><textarea name="address" rows="2" autocomplete="street-address" placeholder="Mahalle, sokak, bina no, daire" required></textarea></label>
+        </fieldset>
+        <label class="check"><input type="checkbox" name="terms" required><span>Mesafeli satış sözleşmesini ve iade şartlarını okudum, onaylıyorum.</span></label>
+      </form>
+      <aside class="co-summary">
+        <h3>Sipariş özeti</h3>
+        <ul class="co-items" id="summary"></ul>
+        <div class="row"><span>Ara toplam</span><span id="coSub"></span></div>
+        <div class="row"><span>Kargo</span><span id="coShip"></span></div>
+        <div class="row total"><span>Toplam</span><b id="checkoutTotal"></b></div>
+        <button class="btn-primary" type="submit" form="checkoutForm" id="payBtn">Siparişi Tamamla <span>→</span></button>
+        <p class="fine">Kart bilgileri bir sonraki adımda ikas güvenli ödeme sayfasında alınır.<br>Visa · Mastercard · Troy</p>
+      </aside>
+    </div>
+    <div class="done" id="done" hidden>
+      <div class="done-mark">✓</div>
+      <h3>Siparişiniz alındı</h3>
+      <p>Demo sürüm — gerçek ödeme ikas altyapısına bağlanacak.</p>
+      <button class="btn-dark" data-action="home">ALIŞVERİŞE DÖN</button>
+    </div>
+  </aside>
+
+  <!-- Tüm ürünler: yan duvardaki askı panosu -->
+  <section class="archive" id="archive" aria-hidden="true" aria-label="Tüm ürünler">
+    <div class="archive-scroll" id="archiveScroll">
+      <header class="archive-head">
+        <div class="archive-title">
+          <small>STORMİ STORE TR · ASKI PANOSU</small>
+          <h2>Tüm <em>Ürünler.</em></h2>
+          <span class="archive-count" id="archiveCount"></span>
+        </div>
+        <div class="archive-tools">
+          <div class="archive-filters" id="archiveFilters"></div>
+          <label class="archive-search">
+            <span aria-hidden="true">⌕</span>
+            <input id="archiveSearch" type="search" placeholder="Desen, ürün ara…" autocomplete="off">
+          </label>
+        </div>
+      </header>
+      <div id="archiveBody"></div>
+    </div>
+    <button class="archive-back" data-action="closeCatalog"><span>←</span> VİTRİNE DÖN</button>
+  </section>
+
+  <!-- Alt bilgi / ipuçları -->
+  <div class="hud-bottom">
+    <div class="hint" id="hint">Bir ürüne tıkla</div>
+    <button class="see-all" id="seeAll" data-action="seeAll"></button>
+    <button class="go-counter" data-action="counter" id="goCounter">KASAYA GİT <span>↓</span></button>
+    <button class="go-counter up" data-action="home" id="goWall"><span>↑</span> DUVARA DÖN</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <div class="veil" id="veil"></div>
+
+  <script src="data/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
